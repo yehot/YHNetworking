@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name         = "YHNetworking"
-  s.version      = "0.0.1"
+  s.version      = "0.1.0"
   s.summary      = "YHNetworking is a network request tool based on AFNetworking."
   s.description  = <<-DESC
                     YHNetworking is a network request tool based on AFNetworking，it's modify
@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
 
-  s.source_files  = "YHNewworking", "YHNetworking/YHNewworking/*.{h,m}"
+  s.source_files  = "YHNetworking", "YHNetworking/YHNetworking/*.{h,m}"
   #s.exclude_files = "Classes/Exclude"
 
   # ――― Resources ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #

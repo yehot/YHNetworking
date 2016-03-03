@@ -36,6 +36,12 @@
 		644727B01C86EAEC00D15A68 /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727971C86EAEC00D15A68 /* UIProgressView+AFNetworking.m */; };
 		644727B11C86EAEC00D15A68 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727991C86EAEC00D15A68 /* UIRefreshControl+AFNetworking.m */; };
 		644727B21C86EAEC00D15A68 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447279B1C86EAEC00D15A68 /* UIWebView+AFNetworking.m */; };
+		644727BF1C87F1AD00D15A68 /* KDS_BaseCacheRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727B51C87F1AD00D15A68 /* KDS_BaseCacheRequest.m */; };
+		644727C01C87F1AD00D15A68 /* KDS_BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727B71C87F1AD00D15A68 /* KDS_BaseRequest.m */; };
+		644727C11C87F1AD00D15A68 /* KDS_NetworkAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727B91C87F1AD00D15A68 /* KDS_NetworkAgent.m */; };
+		644727C21C87F1AD00D15A68 /* KDS_NetworkConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727BB1C87F1AD00D15A68 /* KDS_NetworkConfig.m */; };
+		644727C31C87F1AD00D15A68 /* KDS_RequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727BD1C87F1AD00D15A68 /* KDS_RequestHelper.m */; };
+		644727C41C87F1AD00D15A68 /* ReadMe.md in Sources */ = {isa = PBXBuildFile; fileRef = 644727BE1C87F1AD00D15A68 /* ReadMe.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +111,17 @@
 		644727991C86EAEC00D15A68 /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		6447279A1C86EAEC00D15A68 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		6447279B1C86EAEC00D15A68 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		644727B41C87F1AD00D15A68 /* KDS_BaseCacheRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_BaseCacheRequest.h; sourceTree = "<group>"; };
+		644727B51C87F1AD00D15A68 /* KDS_BaseCacheRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_BaseCacheRequest.m; sourceTree = "<group>"; };
+		644727B61C87F1AD00D15A68 /* KDS_BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_BaseRequest.h; sourceTree = "<group>"; };
+		644727B71C87F1AD00D15A68 /* KDS_BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_BaseRequest.m; sourceTree = "<group>"; };
+		644727B81C87F1AD00D15A68 /* KDS_NetworkAgent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_NetworkAgent.h; sourceTree = "<group>"; };
+		644727B91C87F1AD00D15A68 /* KDS_NetworkAgent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_NetworkAgent.m; sourceTree = "<group>"; };
+		644727BA1C87F1AD00D15A68 /* KDS_NetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_NetworkConfig.h; sourceTree = "<group>"; };
+		644727BB1C87F1AD00D15A68 /* KDS_NetworkConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_NetworkConfig.m; sourceTree = "<group>"; };
+		644727BC1C87F1AD00D15A68 /* KDS_RequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_RequestHelper.h; sourceTree = "<group>"; };
+		644727BD1C87F1AD00D15A68 /* KDS_RequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_RequestHelper.m; sourceTree = "<group>"; };
+		644727BE1C87F1AD00D15A68 /* ReadMe.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = ReadMe.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,9 +163,9 @@
 		644727471C86EAAB00D15A68 /* YHNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				644727B31C87F1AD00D15A68 /* YHNetworking */,
 				6447276D1C86EAEC00D15A68 /* AFDownloadRequestOperation */,
 				644727721C86EAEC00D15A68 /* AFNetworking */,
-				6447279C1C86EAEC00D15A68 /* YHNewworking */,
 				6447274B1C86EAAB00D15A68 /* AppDelegate.h */,
 				6447274C1C86EAAB00D15A68 /* AppDelegate.m */,
 				6447274E1C86EAAB00D15A68 /* ViewController.h */,
@@ -252,11 +269,22 @@
 			path = "UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
-		6447279C1C86EAEC00D15A68 /* YHNewworking */ = {
+		644727B31C87F1AD00D15A68 /* YHNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				644727B41C87F1AD00D15A68 /* KDS_BaseCacheRequest.h */,
+				644727B51C87F1AD00D15A68 /* KDS_BaseCacheRequest.m */,
+				644727B61C87F1AD00D15A68 /* KDS_BaseRequest.h */,
+				644727B71C87F1AD00D15A68 /* KDS_BaseRequest.m */,
+				644727B81C87F1AD00D15A68 /* KDS_NetworkAgent.h */,
+				644727B91C87F1AD00D15A68 /* KDS_NetworkAgent.m */,
+				644727BA1C87F1AD00D15A68 /* KDS_NetworkConfig.h */,
+				644727BB1C87F1AD00D15A68 /* KDS_NetworkConfig.m */,
+				644727BC1C87F1AD00D15A68 /* KDS_RequestHelper.h */,
+				644727BD1C87F1AD00D15A68 /* KDS_RequestHelper.m */,
+				644727BE1C87F1AD00D15A68 /* ReadMe.md */,
 			);
-			path = YHNewworking;
+			path = YHNetworking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -368,17 +396,23 @@
 				644727AB1C86EAEC00D15A68 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				644727A61C86EAEC00D15A68 /* AFURLRequestSerialization.m in Sources */,
 				6447279D1C86EAEC00D15A68 /* AFDownloadRequestOperation.m in Sources */,
+				644727C11C87F1AD00D15A68 /* KDS_NetworkAgent.m in Sources */,
 				644727B01C86EAEC00D15A68 /* UIProgressView+AFNetworking.m in Sources */,
+				644727C01C87F1AD00D15A68 /* KDS_BaseRequest.m in Sources */,
 				644727A71C86EAEC00D15A68 /* AFURLResponseSerialization.m in Sources */,
 				644727501C86EAAB00D15A68 /* ViewController.m in Sources */,
 				6447279F1C86EAEC00D15A68 /* README.md in Sources */,
 				644727AE1C86EAEC00D15A68 /* UIButton+AFNetworking.m in Sources */,
 				644727AF1C86EAEC00D15A68 /* UIImageView+AFNetworking.m in Sources */,
+				644727C41C87F1AD00D15A68 /* ReadMe.md in Sources */,
 				644727A11C86EAEC00D15A68 /* AFHTTPRequestOperationManager.m in Sources */,
 				644727A41C86EAEC00D15A68 /* AFSecurityPolicy.m in Sources */,
 				644727AD1C86EAEC00D15A68 /* UIAlertView+AFNetworking.m in Sources */,
 				644727B21C86EAEC00D15A68 /* UIWebView+AFNetworking.m in Sources */,
 				644727AC1C86EAEC00D15A68 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
+				644727C31C87F1AD00D15A68 /* KDS_RequestHelper.m in Sources */,
+				644727BF1C87F1AD00D15A68 /* KDS_BaseCacheRequest.m in Sources */,
+				644727C21C87F1AD00D15A68 /* KDS_NetworkConfig.m in Sources */,
 				6447274D1C86EAAB00D15A68 /* AppDelegate.m in Sources */,
 				644727B11C86EAEC00D15A68 /* UIRefreshControl+AFNetworking.m in Sources */,
 				644727AA1C86EAEC00D15A68 /* README.md in Sources */,
@@ -570,6 +604,7 @@
 				644727691C86EAAB00D15A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		6447276A1C86EAAB00D15A68 /* Build configuration list for PBXNativeTarget "YHNetworkingTests" */ = {
 			isa = XCConfigurationList;
@@ -578,6 +613,7 @@
 				6447276C1C86EAAB00D15A68 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

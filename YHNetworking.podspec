@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.license      = "MIT"
   s.author             = {"yehot" => "yehot2013@gmail.com"}
   s.source       = { :git => "https://github.com/yehot/YHNetworking.git", :tag => s.version.to_s }
-  s.source_files  = "YHNetworking/YHNetworking/*.{h,m}"
+  s.source_files  = "YHNetwork/*.{h,m}"
   s.platform     = :ios, "7.0"
   s.requires_arc = true
   s.dependency "AFNetworking", "~> 2.0"

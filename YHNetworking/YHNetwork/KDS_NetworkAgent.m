@@ -33,7 +33,7 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
 
 - (void)addRequest:(KDS_BaseRequest *)request {
     
-    //请求头
+    //1、请求头
     NSDictionary *headerDict = [request requestHeaderValueDictionary];
     if (nil != headerDict) { //设置了请求头
         for (id key in headerDict.allKeys) {
@@ -47,20 +47,20 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
         }
     }
     
-    //超时时间
+    //2、超时时间
     self.manager.requestSerializer.timeoutInterval = request.requestTimeoutInterval;
     
+    //3、请求序列化方式
     if (request.requestSerializerType == KDSRequestSerializerTypeHttp) {
         self.manager.requestSerializer = [AFHTTPRequestSerializer serializer];
-    }
-    else if (request.requestSerializerType == KDSRequestSerializerTypeJSON) {
+    } else if (request.requestSerializerType == KDSRequestSerializerTypeJSON) {
         self.manager.requestSerializer = [AFJSONRequestSerializer serializer];
     }
     
+    // 发起请求
     if (nil != request.buildCustomURLRequest) { //自定义Request
         [self startCustomRequest:request];
-    }
-    else {    //KDS_BaseRequest
+    } else {    //KDS_BaseRequest
         [self startKDS_BaseRequest:request];
     }
 }
@@ -85,51 +85,39 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
 /**
  *  发起 KDS_BaseRequest 请求
  */
-- (void)startKDS_BaseRequest:(KDS_BaseRequest *)request {    
+- (void)startKDS_BaseRequest:(KDS_BaseRequest *)request {
+    //  请求的url
     NSString *urlStr = [self buildURLFromRequest:request];
-    id parameters    = request.requestArgument; //请求参数
+    //  请求参数
+    id parameters    = request.requestArgument;
     
     switch (request.requestMethod) {
         case KDSRequestMethodGet:
-        {
             [self getRequest:request withUrlStr:urlStr parameters:parameters];
-        }
             break;
             
         case KDSRequestMethodPost:
-        {
             [self postRequest:request withUrlStr:urlStr parameters:parameters];
-        }
             break;
             
         case KDSRequestMethodPut:
-        {
             [self putRequest:request withUrlStr:urlStr parameters:parameters];
-        }
             break;
             
         case KDSRequestMethodHead:
-        {
             [self headRequest:request withUrlStr:urlStr parameters:parameters];
-        }
             break;
             
         case KDSRequestMethodPatch:
-        {
             [self patchRequest:request withUrlStr:urlStr parameters:parameters];
-        }
             break;
             
         case KDSRequestMethodDelete:
-        {
             [self deleteRequest:request withUrlStr:urlStr parameters:parameters];
-        }
             break;
             
         default:
-        {
             KDSNetLog(@"Error, unsupport method type !");
-        }
             break;
     }
     KDSNetLog(@"Add request: %@", NSStringFromClass([request class]));
@@ -137,7 +125,7 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
 }
 
 /**
- *  发起自定义请求
+ *  发起自定义请求: NSURLRequest —— AFHTTPRequestOperation
  */
 - (void)startCustomRequest:(KDS_BaseRequest *)request {
     
@@ -168,6 +156,7 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
             [request kds_toggleAccessoryWillStopCallBack];
             //如果是KDS_BaseCacheRequest，这里一定会写入缓存
             [request requestCompleteFilter];
+            // 请求同时回调给 delegate 和 block
             if ([request.delegate respondsToSelector:@selector(request:didFinishWithObject:)]) {
                 [request.delegate request:request didFinishWithObject:request.responseJSONObject];
             }
@@ -181,6 +170,7 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
         KDSNetLog(@"%@请求失败, status code = %zd ", NSStringFromClass([request class]), request.responseCode );
         [request kds_toggleAccessoryWillStopCallBack];
         [request requestCompleteFilter];
+        // 请求同时回调给 delegate 和 block
         if ([request.delegate respondsToSelector:@selector(request:didFailWithError:)]) {
             [request.delegate request:request didFailWithError:request.operation.error];
         }
@@ -213,8 +203,12 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
     //断点续传AFN只能使用拼接式的url发起get请求
     NSString *resumeUrl = [KDS_RequestHelper appendComponentDict:parameters toOriginUrl:urlStr];
     NSURLRequest *resumeRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:resumeUrl]];
+    
+    // targetPath 下载的文件目录
     AFDownloadRequestOperation *operation = [[AFDownloadRequestOperation alloc] initWithRequest:resumeRequest targetPath:request.resumableDownloadPath shouldResume:YES];
-    [operation setProgressiveDownloadProgressBlock:request.resumableDownloadProgressBlock]; //进度回调
+    
+    // 设置下载 进度回调
+    [operation setProgressiveDownloadProgressBlock:request.resumableDownloadProgressBlock];
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation * _Nonnull operation, id  _Nonnull responseObject) {
         [self handleRequestResultWithOperation:operation];
     } failure:^(AFHTTPRequestOperation * _Nonnull operation, NSError * _Nonnull error) {
@@ -374,13 +368,16 @@ static NSInteger const maxConcurrentOperationCount_ = 4; ///< 默认最大并发
  *  将 url 拼接完整，加入 baseUrl 和 全局参数
  */
 - (NSString *)buildURLFromRequest:(KDS_BaseRequest *)request {
+    // 1、子类设置的 url
     NSString *detailUrl = [request requestURL];
     if ([detailUrl hasPrefix:@"http"]) {   //子类设置了完整的url
         return detailUrl;
     }
+    //2、全局的 base url
     KDS_NetworkConfig *config = [KDS_NetworkConfig sharedInstance];
     
     if (config.hasBaseUrlComponent) {   // 设置了全局统一参数
+        // 全局的 请求参数
         NSDictionary *component = config.golablUrlComponents;
         detailUrl = [KDS_RequestHelper appendComponentDict:component toOriginUrl:detailUrl];
     }

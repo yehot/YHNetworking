@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		641D2B631CEB7C7400F0D34A /* KDS_ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 641D2B5D1CEB7C7400F0D34A /* KDS_ViewController.m */; };
+		641D2B641CEB7C7400F0D34A /* KDS_OneRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 641D2B601CEB7C7400F0D34A /* KDS_OneRequest.m */; };
+		641D2B651CEB7C7400F0D34A /* KDS_TwoRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 641D2B621CEB7C7400F0D34A /* KDS_TwoRequest.m */; };
 		6447274A1C86EAAB00D15A68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 644727491C86EAAB00D15A68 /* main.m */; };
 		6447274D1C86EAAB00D15A68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447274C1C86EAAB00D15A68 /* AppDelegate.m */; };
 		644727501C86EAAB00D15A68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6447274F1C86EAAB00D15A68 /* ViewController.m */; };
@@ -55,6 +58,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		641D2B5C1CEB7C7400F0D34A /* KDS_ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_ViewController.h; sourceTree = "<group>"; };
+		641D2B5D1CEB7C7400F0D34A /* KDS_ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_ViewController.m; sourceTree = "<group>"; };
+		641D2B5F1CEB7C7400F0D34A /* KDS_OneRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_OneRequest.h; sourceTree = "<group>"; };
+		641D2B601CEB7C7400F0D34A /* KDS_OneRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_OneRequest.m; sourceTree = "<group>"; };
+		641D2B611CEB7C7400F0D34A /* KDS_TwoRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KDS_TwoRequest.h; sourceTree = "<group>"; };
+		641D2B621CEB7C7400F0D34A /* KDS_TwoRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KDS_TwoRequest.m; sourceTree = "<group>"; };
 		644727451C86EAAB00D15A68 /* YHNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YHNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		644727491C86EAAB00D15A68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6447274B1C86EAAB00D15A68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -142,6 +151,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		641D2B5B1CEB7C7400F0D34A /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				641D2B5C1CEB7C7400F0D34A /* KDS_ViewController.h */,
+				641D2B5D1CEB7C7400F0D34A /* KDS_ViewController.m */,
+				641D2B5E1CEB7C7400F0D34A /* request */,
+			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		641D2B5E1CEB7C7400F0D34A /* request */ = {
+			isa = PBXGroup;
+			children = (
+				641D2B5F1CEB7C7400F0D34A /* KDS_OneRequest.h */,
+				641D2B601CEB7C7400F0D34A /* KDS_OneRequest.m */,
+				641D2B611CEB7C7400F0D34A /* KDS_TwoRequest.h */,
+				641D2B621CEB7C7400F0D34A /* KDS_TwoRequest.m */,
+			);
+			path = request;
+			sourceTree = "<group>";
+		};
 		6447273C1C86EAAB00D15A68 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +198,7 @@
 				644727721C86EAEC00D15A68 /* AFNetworking */,
 				6447274B1C86EAAB00D15A68 /* AppDelegate.h */,
 				6447274C1C86EAAB00D15A68 /* AppDelegate.m */,
+				641D2B5B1CEB7C7400F0D34A /* Demo */,
 				6447274E1C86EAAB00D15A68 /* ViewController.h */,
 				6447274F1C86EAAB00D15A68 /* ViewController.m */,
 				644727481C86EAAB00D15A68 /* Supporting Files */,
@@ -392,6 +423,8 @@
 				644727A51C86EAEC00D15A68 /* AFURLConnectionOperation.m in Sources */,
 				644727A01C86EAEC00D15A68 /* AFHTTPRequestOperation.m in Sources */,
 				644727A31C86EAEC00D15A68 /* AFNetworkReachabilityManager.m in Sources */,
+				641D2B641CEB7C7400F0D34A /* KDS_OneRequest.m in Sources */,
+				641D2B631CEB7C7400F0D34A /* KDS_ViewController.m in Sources */,
 				644727A81C86EAEC00D15A68 /* AFURLSessionManager.m in Sources */,
 				644727AB1C86EAEC00D15A68 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				644727A61C86EAEC00D15A68 /* AFURLRequestSerialization.m in Sources */,
@@ -402,6 +435,7 @@
 				644727A71C86EAEC00D15A68 /* AFURLResponseSerialization.m in Sources */,
 				644727501C86EAAB00D15A68 /* ViewController.m in Sources */,
 				6447279F1C86EAEC00D15A68 /* README.md in Sources */,
+				641D2B651CEB7C7400F0D34A /* KDS_TwoRequest.m in Sources */,
 				644727AE1C86EAEC00D15A68 /* UIButton+AFNetworking.m in Sources */,
 				644727AF1C86EAEC00D15A68 /* UIImageView+AFNetworking.m in Sources */,
 				644727D61C8807E800D15A68 /* ReadMe.md in Sources */,

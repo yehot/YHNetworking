@@ -25,72 +25,67 @@ typedef NS_ENUM(NSInteger, KDSRequestSerializerType) {
     KDSRequestSerializerTypeJSON
 };
 
-#pragma mark  Protocol
-
 @class KDS_BaseRequest;
-///请求delegate回调
+
 @protocol KDSRequestDelegate <NSObject>
-
 @optional
-
 /**
  *  请求成功回调
- *
- *  @param request        请求对象
- *  @param responseObject 请求返回值：request.responseObject
  */
 - (void)request:(KDS_BaseRequest *)request didFinishWithObject:(id)responseObject;
 
 /**
  *  请求失败回调
- *
- *  @param request 请求对象
- *  @param error   error信息
  */
 - (void)request:(KDS_BaseRequest *)request didFailWithError:(NSError *)error;
 
 @end
 
-///请求delegate回调的hook方法
+///     hook delegate
 @protocol KDSRequestAccessoryDelegate <NSObject>
 
-/*
- 在 KDSRequestDelegate 回调之外，更详细的回调
- */
 @optional
+
 - (void)requestWillStart:(KDS_BaseRequest *)request;
 - (void)requestWillStop:(KDS_BaseRequest *)request;
 - (void)requestDidStop:(KDS_BaseRequest *)request;
+
 @end
 
-#pragma mark -
-
-@interface KDS_BaseRequest : NSObject
 
 typedef void(^SuccessBlock)(KDS_BaseRequest *request, id responseObject);
 typedef void(^FailureBlock)(KDS_BaseRequest *request, NSError *error);
 
-@property (assign, nonatomic) NSInteger tag;    ///<请求的tag值
 
+@interface KDS_BaseRequest : NSObject
+
+//TODO: 没必要直接访问、操作 operation 对象
+//TODO:  这些 属性，基本没必要暴露出来（尽量简化接口）
 @property (strong, nonatomic) AFHTTPRequestOperation *operation;    ///<请求operation对象
-
-@property (weak, nonatomic) id<KDSRequestDelegate> delegate;    ///<请求回调的delegate
-@property (weak, nonatomic) id<KDSRequestAccessoryDelegate> accessoryDelegate; ///<hook delegate
-
 @property (copy, readonly, nonatomic) SuccessBlock successBlock;      ///<block call back
 @property (copy, readonly, nonatomic) FailureBlock failureBlock;      ///<block call back
+@property (strong, readonly, nonatomic) NSString *responseString;   ///<返回string数据
+@property (strong, readonly, nonatomic) id responseJSONObject;  ///<返回的JSON格式数据
 
 #pragma mark response
 
 @property (strong, readonly, nonatomic) NSDictionary *responseHeaders;   ///<响应头
 
-@property (strong, readonly, nonatomic) NSString *responseString;   ///<返回string数据
-
-@property (strong, readonly, nonatomic) id responseJSONObject;  ///<返回JSON数据
-
 @property (assign, readonly, nonatomic) NSInteger responseCode; ///<响应状态码
 
-#pragma mark - main
+@property (assign, nonatomic) NSInteger tag;    ///<请求的tag值
+
+/**
+ *  请求回调的delegate ,使用 delegate作为请求回调时使用
+ */
+@property (weak, nonatomic) id<KDSRequestDelegate> delegate;
+
+/**
+ *  hook delegate
+ */
+@property (weak, nonatomic) id<KDSRequestAccessoryDelegate> accessoryDelegate;
+
+#pragma mark - use delegate
 /**
  *  开始请求
  */
@@ -106,7 +101,7 @@ typedef void(^FailureBlock)(KDS_BaseRequest *request, NSError *error);
  */
 - (BOOL)isExecuting;
 
-#pragma mark block call back
+#pragma mark - use block
 /**
  *  设置block回调，并发起请求
  */
@@ -118,6 +113,8 @@ typedef void(^FailureBlock)(KDS_BaseRequest *request, NSError *error);
  */
 - (void)setRequestSuccessBlock:(SuccessBlock)success failureBlock:(FailureBlock)failure;
 
+
+//TODO: 无需手动调用
 /**
  *  将请求的 block 置为 nil （to break circle call in block）
  */
@@ -132,7 +129,7 @@ typedef void(^FailureBlock)(KDS_BaseRequest *request, NSError *error);
 - (NSString *)baseURL;
 
 /**
- *  请求的url
+ *  请求的url （如果设置了 baseDomainURL， 则为 baseDomainURL + requestURL）
  */
 - (NSString *)requestURL;
 
@@ -160,8 +157,11 @@ typedef void(^FailureBlock)(KDS_BaseRequest *request, NSError *error);
  *  添加HTTP头参数 （optional） eg:cookie
  */
 - (NSDictionary *)requestHeaderValueDictionary;
+
 //TODO: 处理 cookie 单独抽成方法 ??
 
+
+//TODO: 可以先不暴露这些方法
 //  TODO: filter 是干嘛的？？ 重命名
 /**
  *  请求成功时会调用 （可以缓存请求数据）
@@ -189,15 +189,16 @@ typedef void(^AFConstructingBlock)(id<AFMultipartFormData> formData);
 
 typedef void(^AFDownloadProgressBlock)(AFDownloadRequestOperation *operation, NSInteger Readbytes, long long totalReadBytes, long long totalExpectedBytes, long long totalBytesReadForFile, long long totalBytesExpextedToReadForFile);
 
-- (AFConstructingBlock)constructionBodyBlock
-;
-//  TODO: 有必要为断点续传单独设置为一个属性（或start方法），提供单独的的block回调（暂时不提供delegate回调），或者，单独一个类 BreakPointDownLoadRequest
-//  指定断点续传时的地址
-// 子类如果重写此方法，且返回正常的地址，则会开启断点续传功能
-//  当需
+/// 当POST的内容带有文件等富文本时使用
+- (AFConstructingBlock)constructionBodyBlock;
+
+//指定下载的本地路径，断点续传路径
 - (NSString *)resumableDownloadPath;
 
-// 当需要断点续传时，获得下载进度的回调
+// 当需要断点续传时，获得下载进度的回调：
+//子类添加一个     @property (copy, nonatomic) AFDownloadProgressBlock downloadProgressBlock;
+//重写 - (AFDownloadProgressBlock)resumableDownloadProgressBlock {return self.downloadProgressBlock;}
+//使用时 request.downloadProgressBlock =  ^()xxx {}
 - (AFDownloadProgressBlock)resumableDownloadProgressBlock;
 
 

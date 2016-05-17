@@ -51,13 +51,12 @@
 @property (assign, readonly, nonatomic) BOOL hasBaseUrlComponent;
 
 - (void)setGlobalBaseUrl:(NSString *)aUrlStr;
+
 - (void)addGlobalUrlComponentWithkey:(NSString *)key andValue:(NSString *)value;
-
-
-
 
 //TODO:  状态条上的 活动指示器。自动 转动 和 隐藏。封装到 base rqquest 中
 //[[AFNetworkActivityIndicatorManager sharedManager] setEnabled:YES];
 
+//TODO: 监控网络状态的 通知
 
 @end

@@ -30,7 +30,6 @@
 }
 
 - (void)setGlobalBaseUrl:(NSString *)aUrlStr {
-    
     //  仅能设置一次，多次设置无效
     //  在 app luanch 时设置，防止被修改（待考虑）
     static dispatch_once_t onceToken;

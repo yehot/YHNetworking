@@ -137,7 +137,6 @@ static NSTimeInterval const kDefaultTimeOutInteval_ = 60;
     return nil;
 }
 
-// 子类重写此方法，block 中获得下载进度的回调
 - (AFDownloadProgressBlock)resumableDownloadProgressBlock {
     return nil;
 }

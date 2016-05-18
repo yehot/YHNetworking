@@ -187,6 +187,16 @@ typedef void(^FailureBlock)(KDS_BaseRequest *request, NSError *error);
 
 typedef void(^AFConstructingBlock)(id<AFMultipartFormData> formData);
 
+/**
+ *  下载进度的回调
+ *
+ *  @param operation                       请求operation
+ *  @param Readbytes                       本次下载
+ *  @param totalReadBytes                  当前已下载
+ *  @param totalExpectedBytes              总预期大小
+ *  @param totalBytesReadForFile           当前文件大小
+ *  @param totalBytesExpextedToReadForFile 文件预计总大小
+ */
 typedef void(^AFDownloadProgressBlock)(AFDownloadRequestOperation *operation, NSInteger Readbytes, long long totalReadBytes, long long totalExpectedBytes, long long totalBytesReadForFile, long long totalBytesExpextedToReadForFile);
 
 /// 当POST的内容带有文件等富文本时使用

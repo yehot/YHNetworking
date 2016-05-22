@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AFDownloadRequestOperation/AFDownloadRequestOperation.h>
+//#import <AFDownloadRequestOperation/AFDownloadRequestOperation.h>
+#import "AFDownloadRequestOperation.h"
 
 //请求类型
 typedef NS_ENUM (NSInteger, KDSRequestMethod) {

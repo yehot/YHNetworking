@@ -2,7 +2,7 @@
 
 0、该网络层框架，是基于AFNetworking的二次封装
 
-文件分析：
+结构分析：
 
 1.KDS_BaseRequest 只提供接口，配置请求的参数。不负责 联网请求。
     提供 start 接口。内部调用 KDS_NetworkAgent 这一单例，将请求加入到队列中

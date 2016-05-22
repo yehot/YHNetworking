@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YHNetworking"
-  s.version      = "0.0.3"
+  s.version      = "0.0.4"
   s.summary      = "YHNetworking is a network request tool based on AFNetworking."
   s.homepage     = "https://github.com/yehot/YHNetworking"
   s.license      = "MIT"
@@ -13,6 +13,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.dependency "AFNetworking", "~> 2.0"
   s.dependency "AFDownloadRequestOperation", "~> 2.0"
-
 
 end

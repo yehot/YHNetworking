@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "YHNetworking"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "YHNetworking is a network request tool based on AFNetworking."
   s.homepage     = "https://github.com/yehot/YHNetworking"
   s.license      = "MIT"
